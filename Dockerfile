@@ -6,7 +6,7 @@ ENV PATH $PATH:/root/.acme.sh
 
 SHELL [ "/bin/sh", "-c" ]
 
-RUN apk add --no-cache jq pwgen openssl libqrencode sed
+RUN apk add --no-cache jq pwgen openssl libqrencode sed wget
 
 # Install acme.sh
 RUN wget https://get.acme.sh -O - -q | sh
