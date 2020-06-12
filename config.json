@@ -1,8 +1,9 @@
 {
   "server": "0.0.0.0",
-  "server_port": "443",
+  "server_port": "1080",
   "method": "chacha20-ietf-poly1305",
   "password": "<YOUR_PASSWORD>",
   "timeout": "600",
-  "nameserver": "8.8.8.8"
+  "nameserver": "8.8.8.8",
+  "fast_open": true
 }
