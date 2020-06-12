@@ -2,7 +2,7 @@
 
 #Set a random string password
 password=$(pwgen -n 20 -1)
-sed -i 's/""/"'$password'"/g' /conf/config.json
+sed -i 's/"<YOUR_PASSWORD>"/"'$password'"/g' /conf/config.json
 
 method=$(jq -r ". .method" /conf/config.json)
 password=$(jq -r ". .password" /conf/config.json)
@@ -16,4 +16,8 @@ echo 'connection string is: '$connection_string
 
 qrencode -t ANSIUTF8 $connection_string
 
-ss-server -c /conf/config.json
+# Issue tls certificate
+acme.sh --issue --dns dns_cf --debug -d $DOMAIN
+
+/entrypoint.sh
+# ss-server -c /conf/config.json
